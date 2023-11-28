@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grp3_GrpVI_ITELEC1C", "Grp3_GrpVI_ITELEC1C\Grp3_GrpVI_ITELEC1C.csproj", "{4E3BDCFA-C2E7-402A-ABB4-32C70B5A6118}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E3BDCFA-C2E7-402A-ABB4-32C70B5A6118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E3BDCFA-C2E7-402A-ABB4-32C70B5A6118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E3BDCFA-C2E7-402A-ABB4-32C70B5A6118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E3BDCFA-C2E7-402A-ABB4-32C70B5A6118}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D06F0987-ED4E-4088-BDB1-45DEAB52C51E}
+	EndGlobalSection
+EndGlobal

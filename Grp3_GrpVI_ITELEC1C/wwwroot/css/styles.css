@@ -1,0 +1,57 @@
+.navbar-brand{
+    font-weight:bold;
+    font-size: 40px;
+    margin-right: 50px;
+}
+
+.addButton{
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    margin-top: 30px;
+}
+
+.navbar{
+    background: #256519;
+}
+
+.nav-item{
+    margin-right: 20px
+}
+
+.nav-item:hover{
+    background: #fefefe;
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #fefefe;
+}
+
+.navbar-nav .nav-item .nav-link:hover{
+    color: #256519
+}
+.btn-outline-light.btn-custom:hover {
+    color: #256519; /* Set text color to green on hover */
+    background-color: #fefefe; /* Set background color to light color on hover */
+    border-color: #256519; /* Set outline color to green on hover */
+}
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+
+.custom-rounded {
+    border-radius: 10px; 
+}
+
+.custom-image-rounded {
+    border-radius: 10px; 
+}

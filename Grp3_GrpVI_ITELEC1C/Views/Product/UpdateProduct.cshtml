@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop Homepage - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    @*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    *@
+    @model Product;
+    @if (Model != null)
+    {
+        <form asp-action="UpdateProduct" asp-controller="Product" method="post">
+
+            <div class="row">
+                <div class="form-group col">
+                    <label asp-for="ProductName">Product Name</label>
+                    <input type="text" class="form-control" asp-for="ProductName">
+                </div>
+                <div class="form-group col">
+                    <label asp-for="Description">Description</label>
+                    <input type="text" class="form-control" asp-for="Description">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col">
+                    <label asp-for="Price">Price</label>
+                    <input type="text" class="form-control" asp-for="Price">
+                </div>
+                <div class="form-group col">
+                    <label asp-for="Stock">Stock</label>
+                    <input type="text" class="form-control" asp-for="Stock">
+                </div>
+            </div>
+            <br />
+            <center><button type="submit" class="btn btn-primary">Update</button></center>
+        </form>
+    }
+    else
+    {
+        <h2>Product not found</h2>
+    }
+    <a class="btn btn-dark" type="button" asp-controller="Product" asp-action="Index">Go Back</a>
+
+</body>
