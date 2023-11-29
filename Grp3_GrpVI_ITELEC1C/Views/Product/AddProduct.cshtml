@@ -22,7 +22,7 @@
 
 @model Product;
 <h1>Add New Product</h1>
-<form asp-action="AddProduct" asp-controller="Product" method="post">
+    <form asp-action="AddProduct" asp-controller="Product" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="form-group col">
             <label asp-for="ProductName">Product Name</label>
@@ -44,6 +44,10 @@
             <input type="text" class="form-control" asp-for="Stock">
         </div>
     </div>
+        <div class="form-group">
+            <label asp-for="Photo">Product Image</label>
+            <input type="file" class="form-control" name="Photo">
+        </div>
     <br />
     <center><button type="submit" class="btn btn-primary">Submit</button></center>
 </form>

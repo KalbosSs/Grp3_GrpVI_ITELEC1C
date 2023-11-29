@@ -1,5 +1,6 @@
 ﻿using Grp3_GrpVI_ITELEC1C.Models;
 using Grp3_GrpVI_ITELEC1C.Services;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -8,10 +9,12 @@ namespace Grp3_GrpVI_ITELEC1C.Controllers
     public class ProductController : Controller
     {
         private IProductDataService _service;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductController(IProductDataService service)
+        public ProductController(IProductDataService service, IWebHostEnvironment webHostEnvironment)
         {
             _service = service;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: /<controller>/
@@ -30,6 +33,19 @@ namespace Grp3_GrpVI_ITELEC1C.Controllers
         [HttpPost]
         public async Task<IActionResult> AddProductAsync(Product product)
         {
+            if (product.Photo != null && product.Photo.Length > 0)
+            {
+                // Save the uploaded file to the wwwroot/img folder
+                var uploadsFolder = Path.Combine("wwwroot", "img");
+                var uniqueFileName = Guid.NewGuid().ToString() + "_" + product.Photo.FileName;
+                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await product.Photo.CopyToAsync(fileStream);
+                }
+                product.PhotoFile = uniqueFileName;
+                product.PhotoPath = Path.Combine("/img/", uniqueFileName);
+            }
             await _service.AddProductAsync(product);
             return RedirectToAction("Index");
         }
