@@ -45,6 +45,10 @@
                     <input type="text" class="form-control" asp-for="Stock">
                 </div>
             </div>
+            <div class="form-group">
+                <label asp-for="Photo">Product Image</label>
+                <input type="file" class="form-control" name="Photo">
+            </div>
             <br />
             <center><button type="submit" class="btn btn-primary">Update</button></center>
         </form>
@@ -56,3 +60,4 @@
     <a class="btn btn-dark" type="button" asp-controller="Product" asp-action="Index">Go Back</a>
 
 </body>
+</html>

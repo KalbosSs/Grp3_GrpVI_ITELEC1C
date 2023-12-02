@@ -1,6 +1,6 @@
 ﻿@model List<Product>
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Customer Products";
 }
 
 <!DOCTYPE html>
@@ -21,13 +21,6 @@
     <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="addButton">
-        <a class="btn btn-outline-dark btn-lg" asp-controller="Product" asp-action="AddProduct">
-            <i class="material-icons">add_shopping_cart</i>
-             Add Product
-        </a>
-    </div>
-    
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
@@ -54,13 +47,9 @@
                             </div>
                             <!-- Product actions -->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <br>
-                                <div class="text-center" id="divBtn">
-                                    <a class="btn btn-outline-info" asp-action="UpdateProduct" asp-route-id="@item.Id">
-                                        <i class="material-icons">mode_edit</i>
-                                    </a>
-                                    <a class="btn btn-outline-danger" asp-action="DeleteProduct" asp-route-id="@item.Id">
-                                        <i class="material-icons">delete</i>
+                                <div class="text-center">
+                                    <a class="btn btn-outline-success mt-auto" asp-action="Order" asp-route-id="@item.Id">
+                                        <i class="bi-cart-fill me-1"></i>Add to Cart
                                     </a>
                                 </div>
                             </div>
