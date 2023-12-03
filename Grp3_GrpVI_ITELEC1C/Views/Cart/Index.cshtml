@@ -1,0 +1,68 @@
+﻿@model List<Cart>
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop Homepage - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var item in Model)
+                {
+                    <div class="col mb-5">
+                        <div class="card h-100 position-relative custom-rounded">
+                            <!-- Product image with dark overlay -->
+                            <div class="position-relative">
+                                <img src="@Url.Content(item.PhotoPath)" alt="Product Image" class="img-fluid" />
+                                <div class="dark-overlay"></div>
+                            </div>
+                            <!-- Other product details -->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name -->
+                                    <h5 class="fw-bolder">@item.ProductName</h5>
+                                    <!-- Product price -->
+                                    ₱@item.Price
+                                    <br />
+                                    Quantity: @item.Quantity
+                                    <br />
+                                    Total Price:₱ @item.TotalPrice
+                                </div>
+                            </div>
+                            <!-- Product actions -->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center" id="divBtn">
+                                    <a class="btn btn-outline-info" asp-action="Order" asp-controller="CustomerProduct" asp-route-id="@item.Id">
+                                        <i class="material-icons">mode_edit</i>
+                                    </a>
+                                    <a class="btn btn-outline-danger" asp-action="DeleteOrder" asp-route-id="@item.Id">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</body>
+</html>
