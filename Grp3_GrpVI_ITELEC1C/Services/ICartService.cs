@@ -6,5 +6,7 @@ namespace Grp3_GrpVI_ITELEC1C.Services
     {
         Task AddToCartAsync(Product product, int quantity);
         Task<List<Cart>> GetCartItemsAsync();
+        Task UpdateCartItemAsync(Cart cart);
+        Task DeleteCartItemsAsync(Cart cart);
     }
 }

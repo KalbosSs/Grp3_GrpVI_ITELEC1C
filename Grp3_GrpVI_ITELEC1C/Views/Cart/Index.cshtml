@@ -44,16 +44,16 @@
                                     <br />
                                     Quantity: @item.Quantity
                                     <br />
-                                    Total Price:₱ @item.TotalPrice
+                                    Total Price: ₱ @item.TotalPrice
                                 </div>
                             </div>
                             <!-- Product actions -->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center" id="divBtn">
-                                    <a class="btn btn-outline-info" asp-action="Order" asp-controller="CustomerProduct" asp-route-id="@item.Id">
+                                    <a class="btn btn-outline-info" asp-action="EditCart" asp-controller="Cart" asp-route-id="@item.Id">
                                         <i class="material-icons">mode_edit</i>
                                     </a>
-                                    <a class="btn btn-outline-danger" asp-action="DeleteOrder" asp-route-id="@item.Id">
+                                    <a class="btn btn-outline-danger" asp-action="DeleteCart" asp-controller="Cart" asp-route-id="@item.Id">
                                         <i class="material-icons">delete</i>
                                     </a>
                                 </div>
@@ -64,5 +64,7 @@
             </div>
         </div>
     </section>
+
+    <center><button type="submit" class="btn btn-outline-success btn-lg">Place Order!</button></center>
 </body>
 </html>

@@ -33,6 +33,8 @@ namespace Grp3_GrpVI_ITELEC1C.Services
               
                     ProductName = product.ProductName,
                     Price = product.Price,
+                    Description = product.Description,
+                    Stock = product.Stock,
                     TotalPrice = product.Price * quantity,
                     PhotoPath = product.PhotoPath,
                     Quantity = quantity
@@ -48,6 +50,29 @@ namespace Grp3_GrpVI_ITELEC1C.Services
         public async Task<List<Cart>> GetCartItemsAsync()
         {
             return await _appDbContext.Carts.ToListAsync();
+        }
+
+        public async Task DeleteCartItemAsync(Cart cart)
+        {
+            var selectedCartItem = await _appDbContext.Carts.Where(x => cart.Id == x.Id).FirstOrDefaultAsync();
+
+            if (selectedCartItem != null)
+            {
+                _appDbContext.Carts.Remove(selectedCartItem);
+                await _appDbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task UpdateCartItemAsync(Cart cart)
+        {
+            var selectedCartItem = await _appDbContext.Carts.Where(x => cart.Id == x.Id).FirstOrDefaultAsync();
+
+            if (selectedCartItem != null)
+            {
+                selectedCartItem.Quantity = cart.Quantity;
+                selectedCartItem.TotalPrice = selectedCartItem.Price * selectedCartItem.Quantity;
+                await _appDbContext.SaveChangesAsync();
+            }
         }
     }
 }
