@@ -35,7 +35,6 @@ namespace Grp3_GrpVI_ITELEC1C.Controllers
         {
             if (product.Photo != null && product.Photo.Length > 0)
             {
-                // Save the uploaded file to the wwwroot/img folder
                 var uploadsFolder = Path.Combine("wwwroot", "img");
                 var uniqueFileName = Guid.NewGuid().ToString() + "_" + product.Photo.FileName;
                 var filePath = Path.Combine(uploadsFolder, uniqueFileName);
