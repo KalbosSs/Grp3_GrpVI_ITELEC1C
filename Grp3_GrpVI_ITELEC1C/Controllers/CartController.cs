@@ -1,12 +1,15 @@
-﻿using Grp3_GrpVI_ITELEC1C.Models;
+﻿using Grp3_GrpVI_ITELEC1C.Data;
+using Grp3_GrpVI_ITELEC1C.Models;
 using Grp3_GrpVI_ITELEC1C.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Grp3_GrpVI_ITELEC1C.Controllers
 {
     public class CartController : Controller
     {
         private readonly ICartService _cartService;
+        
 
         public CartController(ICartService cartService)
         {
@@ -46,8 +49,23 @@ namespace Grp3_GrpVI_ITELEC1C.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteCart(Cart cart)
         {
-            await _cartService.DeleteCartItemsAsync(cart);
+            await _cartService.DeleteCartItemAsync(cart);
             return RedirectToAction("Index");
         }
+        public IActionResult OrderForm()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> PlaceOrder(string customerName)
+        {
+            await _cartService.PlaceOrderAsync(customerName);
+            var orderDetails = _cartService.GetOrderDetails();
+
+
+            
+            return RedirectToAction("Index");
+        }
+
     }
 }

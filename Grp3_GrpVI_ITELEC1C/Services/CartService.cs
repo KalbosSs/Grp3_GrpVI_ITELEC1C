@@ -74,5 +74,38 @@ namespace Grp3_GrpVI_ITELEC1C.Services
                 await _appDbContext.SaveChangesAsync();
             }
         }
+        public Order GetOrderDetails()
+        {
+            var cartItems = _appDbContext.Carts.ToList();
+            var orderDetails = string.Join(", ", cartItems.Select(item => $"{item.ProductName} (Quantity: {item.Quantity}, Total Price: ₱{item.TotalPrice})"));
+            decimal totalOrders = cartItems.Sum(item => item.TotalPrice);
+
+            return new Order
+            {
+                OrderDetails = orderDetails,
+                TotalOrders = totalOrders
+            };
+        }
+        public async Task ClearCartAsync()
+        {
+            var cartItems = await _appDbContext.Carts.ToListAsync();
+            _appDbContext.Carts.RemoveRange(cartItems);
+            await _appDbContext.SaveChangesAsync();
+        }
+
+        public async Task PlaceOrderAsync(string customerName)
+        {
+            var orderDetails = GetOrderDetails();
+            var order = new Order
+            {
+                OrderDetails = orderDetails.OrderDetails,
+                TotalOrders = orderDetails.TotalOrders,
+                CustomerName = customerName
+            };
+            _appDbContext.Orders.Add(order);
+            await _appDbContext.SaveChangesAsync();
+
+            await ClearCartAsync();
+        }
     }
 }

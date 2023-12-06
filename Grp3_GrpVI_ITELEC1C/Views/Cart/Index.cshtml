@@ -65,6 +65,17 @@
         </div>
     </section>
 
-    <center><button type="submit" class="btn btn-outline-success btn-lg">Place Order!</button></center>
+    <center>
+        @{
+            if (Model.Any())
+            {
+                <a href="@Url.Action("OrderForm", "Cart")" class="btn btn-outline-success btn-lg">Checkout!</a>
+            }
+            else
+            {
+                <button class="btn btn-outline-success btn-lg" disabled>Checkout</button>
+            }
+        }
+    </center>
 </body>
 </html>
