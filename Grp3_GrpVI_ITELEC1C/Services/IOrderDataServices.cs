@@ -5,5 +5,6 @@ namespace Grp3_GrpVI_ITELEC1C.Services
     public interface IOrderDataService
     {
         Task<List<Order>> GetOrderAsync();
+        Task DeleteOrderAsync(Order order);
     }
 }
