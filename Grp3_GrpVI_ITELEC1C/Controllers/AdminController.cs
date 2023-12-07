@@ -31,12 +31,13 @@ namespace Grp3_GrpVI_ITELEC1C.Controllers
             if (admin != null)
             {
                 // Successful login
-                return RedirectToAction("Index", "");
+                return RedirectToAction("Index", "Product");
             }
             else
             {
                 // Redirect back to the login page with an error message
-                return RedirectToAction("Index", "Home");
+                ViewData["ErrorMessage"] = "Invalid email or password";
+                return View("Index");
             }
         }
     }
