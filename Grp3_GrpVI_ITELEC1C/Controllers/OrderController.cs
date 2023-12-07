@@ -1,4 +1,5 @@
-﻿using Grp3_GrpVI_ITELEC1C.Services;
+﻿using Grp3_GrpVI_ITELEC1C.Models;
+using Grp3_GrpVI_ITELEC1C.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Grp3_GrpVI_ITELEC1C.Controllers
@@ -17,6 +18,20 @@ namespace Grp3_GrpVI_ITELEC1C.Controllers
         {
             var orders = await _service.GetOrderAsync();
             return View(orders);
+        }
+        [HttpGet]
+        public async Task<IActionResult> DeleteOrder(int id)
+        {
+            var orders = await _service.GetOrderAsync();
+            var order = orders.Where(x => x.Id == id).FirstOrDefault();
+            return View(order);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteOrder(Order order)
+        {
+            await _service.DeleteOrderAsync(order);
+            return RedirectToAction("Index");
         }
     }
 }

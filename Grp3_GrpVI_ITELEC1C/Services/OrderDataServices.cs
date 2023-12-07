@@ -17,5 +17,15 @@ namespace Grp3_GrpVI_ITELEC1C.Services
             var orders = await _appDbContext.Orders.ToListAsync();
             return orders;
         }
+        public async Task DeleteOrderAsync(Order order)
+        {
+            var selectedOrder = await _appDbContext.Orders.Where(x => order.Id == x.Id).FirstOrDefaultAsync();
+
+            if (selectedOrder != null)
+            {
+                _appDbContext.Orders.Remove(selectedOrder);
+                await _appDbContext.SaveChangesAsync();
+            }
+        }
     }
 }

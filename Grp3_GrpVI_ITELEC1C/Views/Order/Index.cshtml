@@ -28,7 +28,7 @@
                 <th width="300px">Customer</th>
                 <th width="400px">Order Details</th>
                 <th width="400px">Price</th>
-                <th width="50px">Done</th>
+                <th width="50px">Delete</th>
             </tr>
             @foreach (var item in Model)
             {
@@ -36,7 +36,7 @@
                     <td>@item.CustomerName</td>
                     <td>@item.OrderDetails</td>
                     <td>@item.TotalOrders</td>
-                    <td><input type="checkbox" name="selectedOrders" /></td>
+                    <td><a class="btn btn-danger" asp-action="DeleteOrder" asp-route-id="@item.Id">Delete</a></td>
                 </tr>
             }
         </table>
