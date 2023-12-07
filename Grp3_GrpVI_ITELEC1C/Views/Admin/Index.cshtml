@@ -22,32 +22,34 @@
     <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container mt-5">
-        <h2 class="mb-4">Login Form</h2>
+    @section LoginForm {
+        <div class="container mt-5">
+            <h2 class="mb-4">Login Form</h2>
 
-        <!-- Display validation errors -->
-        @if (!ViewData.ModelState.IsValid)
-        {
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-                    {
-                        <li>@error.ErrorMessage</li>
-                    }
-                </ul>
-            </div>
-        }
+            <!-- Display validation errors -->
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <li>@error.ErrorMessage</li>
+                        }
+                    </ul>
+                </div>
+            }
 
-        <form asp-action="Login" method="post">
-            <label for="email">Email:</label>
-            <input type="email" asp-for="AdminEmail" required>
+            <form asp-action="Login" method="post">
+                <label for="email">Email:</label>
+                <input type="email" asp-for="AdminEmail" required>
 
-            <label for="password">Password:</label>
-            <input type="password" asp-for="AdminPassword" required>
+                <label for="password">Password:</label>
+                <input type="password" asp-for="AdminPassword" required>
 
-            <input type="submit" value="Login">
-        </form>
-    </div>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    }
 </body>
 </html>
 </html>
